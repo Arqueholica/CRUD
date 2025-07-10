@@ -21,6 +21,10 @@ Para buscar, se aconseja el méthod equalsIgnoreCase().
  */
         Scanner sc = new Scanner(System.in);
         sc.useLocale(new Locale("es", "ES"));
+        // ⛔ David, tuve que poner lo de locale (después de buscar por el Internet),
+        // porque no me deja poner decimales en weight y price con scanner.
+        // Me daba un error como si lo estuviera poniendo mal (y lo estaba poniendo con punto)
+        // No sé dónde está el fallo T.T
 
         ArrayList<Comida> list = new ArrayList<>();
         list.add(new Comida("Pera", "Albacete", 0.8, 4.8));
