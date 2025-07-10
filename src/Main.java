@@ -1,4 +1,4 @@
-import javax.sound.midi.Soundbank;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,8 +16,7 @@ Se aconseja en este caso realizar un switch dentro de un while. El switch sobre 
 5- Borrar elemento por nombre (implica opción buscar)
 0- Salir
 Para buscar, se aconseja el méthod equalsIgnoreCase().
-+EXTRA: posibilidad de mover un elemento a otro lugar de la lista, sin borrar el que había
-*EXTRA: calcular precio final del producto según su peso y precio/Kg
+
  */
         Scanner sc = new Scanner(System.in);
 
@@ -42,6 +41,7 @@ int answer;
             System.out.println("0 - Salir y pagar");
             System.out.println();
             System.out.println("¿Qué desea hacer? Seleccione una opción");
+
             answer = sc.nextInt();
             sc.nextLine();
 
@@ -62,6 +62,7 @@ int answer;
                     double price = sc.nextDouble();
                     sc.nextLine();
 
+
                     list.add(new Comida(name,origin,weight,price));
 
                     System.out.println("¡Nuevo producto añadido con éxito!");
@@ -79,9 +80,9 @@ int answer;
                            System.out.println(food);
                            found = true;
                        }
-                       if(!found){
-                           System.out.println("El producto que buscas no existe");
-                       }
+                    }
+                    if(!found){
+                        System.out.println("El producto que buscas no existe");
                     }
                     break;
                 case 4:
@@ -96,23 +97,38 @@ int answer;
                             System.out.println("El nuevo nombre es: " + rename);
                             found = true;
                         }
-                        if(!found){
-                            System.out.println("No se encuentra el producto a modificar");
-                        }
+                    }
+                    if(!found){
+                        System.out.println("No se encuentra el producto a modificar");
                     }
                     break;
                 case 5:
                     System.out.println("Indica qué producto quieres eliminar: ");
                     String eliminar = sc.nextLine();
                     found = false;
-                    for (Comida food: list){
+                    int id = -1;
+
+                    for (int i = 0; i < list.size() ; i++) {
+                        Comida food = list.get(i);
                         if(food.getName().equalsIgnoreCase(eliminar)){
-                            System.out.println();
+                            id = i;
                             found = true;
+                            break;
                         }
+
                     }
-                    break;
-            }
+                        if(found){
+                            list.remove(id);
+                            System.out.println("El producto se ha eliminado correctamente");
+                        }
+                        if(!found){
+                    System.out.println("No se encuentra el producto a eliminar");
+                    }
+                        break;
+                 }
+
+
+
 
         }while(answer != 0);
 
