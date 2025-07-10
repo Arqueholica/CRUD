@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
@@ -19,6 +20,7 @@ Para buscar, se aconseja el méthod equalsIgnoreCase().
 
  */
         Scanner sc = new Scanner(System.in);
+        sc.useLocale(new Locale("es", "ES"));
 
         ArrayList<Comida> list = new ArrayList<>();
         list.add(new Comida("Pera", "Albacete", 0.8, 4.8));
@@ -32,7 +34,7 @@ Para buscar, se aconseja el méthod equalsIgnoreCase().
 int answer;
 
         do{
-            System.out.println("--- MENÚ ---" + '\n');
+            System.out.println('\n' + "--- MENÚ ---" + '\n');
             System.out.println("1 - Introducir alimento");
             System.out.println("2 - Mostrar carrito");
             System.out.println("3 - Buscar alimento POR NOMBRE");
